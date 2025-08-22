@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
-  initWhatsAppLinks({ phone: '+56988934851' }); // ← reemplaza por número E.164 real
+  initWhatsAppLinks({ phone: '{{WHATSAPP_E164}}' }); // ← reemplaza por número E.164 real
   setCurrentYear();
 
   if (document.body.classList.contains('page--home')) {
@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderServicesPage('#services-grid-mecanica', '#services-grid-electronica');
   }
   if (document.body.classList.contains('page--cotiza')) {
-    initQuoteForm('#quoteForm', '#quoteMsg', '#quoteServiceSelect', '#quoteWhatsApp', { phone: '+56988934851' });
+    initQuoteForm('#quoteForm', '#quoteMsg', '#quoteServiceSelect', '#quoteWhatsApp', { phone: '{{WHATSAPP_E164}}' });
   }
   if (document.body.classList.contains('page--agendar')) {
-    initScheduleForm('#scheduleForm', '#scheduleMsg', '#scheduleServiceSelect', '#scheduleWhatsApp', { phone: '+56988934851' });
+    initScheduleForm('#scheduleForm', '#scheduleMsg', '#scheduleServiceSelect', '#scheduleWhatsApp', { phone: '{{WHATSAPP_E164}}' });
   }
 });

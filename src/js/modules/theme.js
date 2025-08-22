@@ -56,14 +56,13 @@ function updateFaviconForTheme(theme) {
     document.head.appendChild(link);
   }
 
-  const base = getBasePrefix(); // 👈
   const map = {
-    actual:    `${base}/assets/img/favicon.svg`,
-    propuesta: `${base}/assets/img/favicon-dark.svg`,
-    scania:    `${base}/assets/img/favicon-scania.svg`
+    actual:    '/webGenerica02/assets/img/favicon.svg',
+    propuesta: '/webGenerica02/assets/img/favicon-dark.svg',
+    scania:    '/webGenerica02/assets/img/favicon-scania.svg'
   };
 
-  const href = (map[theme] || map.actual) + `?v=${Date.now()}`;
+  const href = (map[theme] || map.actual) + `?v=${Date.now()}`; // evita caché duro en Chrome
   link.href = href;
 
   let shortcut = document.querySelector('link[rel="shortcut icon"]');
@@ -74,4 +73,5 @@ function updateFaviconForTheme(theme) {
   }
   shortcut.href = href;
 }
+
 
