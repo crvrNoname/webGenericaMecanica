@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width,initial-scale=1" /> <title>AIR – Mecánica y Electrónica</title> <meta name="description" content="Su auto va a quedar JOYA" /> <!-- Prefijo para rutas absolutas del sitio (vacío en raíz; /REPO en Project Pages) --> <meta id="site-base" data-base="/<REPO>"> <!-- Favicon base (fallback). theme.js lo actualizará según el tema --> <link rel="icon" type="image/svg+xml" href="/<REPO>/assets/img/favicon.svg" /> <link rel="shortcut icon" type="image/svg+xml" href="/<REPO>/assets/img/favicon.svg" /> <!-- Color barra móvil (theme.js lo ajusta al cambiar tema) --> <meta name="theme-color" content="#0f1115"> <!-- CSS --> <link rel="preload" href="/<REPO>/assets/css/main.css" as="style" /> <link rel="stylesheet" href="/<REPO>/assets/css/main.css" /> <!-- Open Graph --> <meta property="og:title" content="AIR" /> <meta property="og:description" content="Su auto va a quedar JOYA" /> <meta property="og:image" content="/<REPO>/assets/img/logo.svg" /> <meta property="og:type" content="website" /> <!-- JS (tu main bundle) --> <script type="module" src="/<REPO>/assets/js/main.js" defer></script> </head>
+<body class="page page--home">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="header" role="banner">
+    <div class="container header__inner">
+      <a href="./index.html" class="brand" aria-label="Ir al inicio">
+        <img src="./assets/img/logo.svg" alt="Logo {{AIR}}" class="brand__logo">
+        <span class="brand__name">AIR</span>
+      </a>
+
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">☰</button>
+
+      <nav id="nav" class="nav" role="navigation" aria-label="Principal">
+        <ul class="nav__list">
+          <li><a href="./index.html" aria-current="page">Inicio</a></li>
+          <li><a href="./pages/servicios.html">Servicios</a></li>
+          <li><a href="./pages/cotiza.html">Cotiza</a></li>
+          <li><a href="./pages/agendar.html">Agendar</a></li>
+          <li><a href="./pages/contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__cta">
+        <a class="btn btn--primary" data-whatsapp href="#" id="ctaWhatsAppHeader">WhatsApp</a>
+        <a class="btn btn--ghost" href="tel:+56912345678" aria-label="Llamar por teléfono">+56 9 88934851</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" class="main" role="main">
+    <section class="hero">
+      <div class="container hero__inner">
+        <h1>Mecánica & Electrónica Automotriz</h1>
+        <p class="lead">Su auto va a quedar JOYA</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="./pages/cotiza.html">Cotiza aquí</a>
+          <a class="btn btn--secondary" href="./pages/agendar.html">Agendar</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="container">
+        <header class="section__header">
+          <h2>Servicios destacados</h2>
+          <p>Algunas de las tareas que realizamos a diario.</p>
+        </header>
+        <div class="grid" id="services-grid" data-source="home"></div>
+        <div class="section__actions">
+          <a class="btn btn--ghost" href="./pages/servicios.html">Ver todos los servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="models">
+      <div class="container">
+        <header class="section__header">
+          <h2>Modelos de atención</h2>
+        </header>
+        <ul class="chips">
+          <li class="chip">Autos</li>
+          <li class="chip">Camionetas</li>
+          <li class="chip">Furgones</li>
+          <li class="chip">Camiones</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta__inner">
+        <h3>¿Necesitas ayuda ahora?</h3>
+        <p>Escríbenos por WhatsApp o llámanos, respondemos rápido.</p>
+        <a class="btn btn--primary" data-whatsapp href="#" id="ctaWhatsAppBody">WhatsApp</a>
+        <a class="btn btn--secondary" href="tel:+56912345678">Llamar</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__grid">
+      <div>
+        <img src="./assets/img/logo.svg" alt="" class="footer__logo" />
+        <p>AIR</p>
+        <p class="small">Su auto va a quedar JOYA</p>
+      </div>
+      <div>
+        <h4>Ubicación</h4>
+        <p>Latadia #4243</p>
+        <a class="link" href="https://www.google.com/maps/place/Latad%C3%ADa+4245,+7550577+Las+Condes,+Regi%C3%B3n+Metropolitana/@-33.4303162,-70.5825477,17z/data=!3m1!4b1!4m6!3m5!1s0x9662cf010dc3c24f:0x652b3ec1db32aeec!8m2!3d-33.4303163!4d-70.5776768!16s%2Fg%2F11c0pyqcvg?entry=ttu&g_ep=EgoyMDI1MDgxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Ver en Google Maps</a>
+      </div>
+      <div>
+        <h4>Horario</h4>
+        <p>L–V 09:00–18:00, S 09:00–14:00</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="list">
+          <li><a data-whatsapp href="#" id="ctaWhatsAppFooter">WhatsApp</a></li>
+          <li><a href="mailto:{{correo@dominio.cl}}">air@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/air.diag431?igsh=cjk2cXZnbTUzZ2xn " target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.instagram.com/elmecanicov?igsh=d2dnbTkydTc5bjcx" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__copy small">© <span id="year"></span> AIR. Todos los derechos reservados.</div>
+    <section class="theme-switcher" style="display:flex; gap:.5rem;">
+  <button class="button button--ghost js-theme" data-theme="actual"    aria-pressed="false">Actual</button>
+  <button class="button button--ghost js-theme" data-theme="propuesta" aria-pressed="false">Propuesta</button>
+  <button class="button button--ghost js-theme" data-theme="scania"    aria-pressed="false">Scania</button>
+</section>
+
+  </footer>
+
+  <a class="wafloat" data-whatsapp id="waFloat" href="#" aria-label="Chatear por WhatsApp">💬</a>
+
+  <script type="module" src="./assets/js/main.js"></script>
+</body>
+</html>

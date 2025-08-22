@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0b1020"/>
+  <!-- mismo motor que arriba, quizá en #2dd4bf para invertir -->
+  <svg x="8" y="8" width="48" height="48" viewBox="0 0 586 426" preserveAspectRatio="xMidYMid meet">
+    <g transform="translate(0,426) scale(0.1,-0.1)">
+      <path fill="#2dd4bf" d="M1430 3830 ... 1002 -12z"/>
+    </g>
+  </svg>
+</svg>

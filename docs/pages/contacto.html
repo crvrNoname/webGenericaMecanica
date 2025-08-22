@@ -1,0 +1,51 @@
+<!-- docs/pages/contacto.html (placeholders en canales y mapa) -->
+<!doctype html>
+<html lang="es">
+<head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width,initial-scale=1" /> <title>AIR – Mecánica y Electrónica</title> <meta name="description" content="Su auto va a quedar JOYA" /> <!-- Prefijo para rutas absolutas del sitio (vacío en raíz; /REPO en Project Pages) --> <meta id="site-base" data-base="/<REPO>"> <!-- Favicon base (fallback). theme.js lo actualizará según el tema --> <link rel="icon" type="image/svg+xml" href="/<REPO>/assets/img/favicon.svg" /> <link rel="shortcut icon" type="image/svg+xml" href="/<REPO>/assets/img/favicon.svg" /> <!-- Color barra móvil (theme.js lo ajusta al cambiar tema) --> <meta name="theme-color" content="#0f1115"> <!-- CSS --> <link rel="preload" href="/<REPO>/assets/css/main.css" as="style" /> <link rel="stylesheet" href="/<REPO>/assets/css/main.css" /> <!-- Open Graph --> <meta property="og:title" content="AIR" /> <meta property="og:description" content="Su auto va a quedar JOYA" /> <meta property="og:image" content="/<REPO>/assets/img/logo.svg" /> <meta property="og:type" content="website" /> <!-- JS (tu main bundle) --> <script type="module" src="/<REPO>/assets/js/main.js" defer></script> </head>
+<body class="page page--contacto">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="brand"><img src="../assets/img/logo.svg" alt="" class="brand__logo"><span class="brand__name">{{AIR}}</span></a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav">☰</button>
+      <nav id="nav" class="nav" aria-label="Principal">
+        <ul class="nav__list">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="./servicios.html">Servicios</a></li>
+          <li><a href="./cotiza.html">Cotiza</a></li>
+          <li><a href="./agendar.html">Agendar</a></li>
+          <li><a href="./contacto.html" aria-current="page">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main container">
+    <header class="section__header">
+      <h1>Contacto</h1>
+      <p>Escríbenos o visítanos.</p>
+    </header>
+
+    <div class="contact__grid">
+      <div>
+        <h2>Canales</h2>
+        <ul class="list">
+          <li><strong>WhatsApp:</strong> <a data-whatsapp href="#" id="ctaWhatsAppContact">+56 9 88934851</a></li>
+          <li><strong>Teléfono:</strong> <a href="tel:+56912345678">+56 9 88934851</a></li>
+          <li><strong>Email:</strong> <a href="mailto:{{correo@dominio.cl}}">{{correo@dominio.cl}}</a></li>
+          <li><strong>Instagram:</strong> <a href="https://instagram.com/{{cuenta}}" target="_blank" rel="noopener">https://instagram.com/{{cuenta}}</a></li>
+          <li><strong>Facebook:</strong> <a href="https://facebook.com/{{pagina}}" target="_blank" rel="noopener">https://facebook.com/{{pagina}}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Ubicación</h2>
+        <p>{{Latadia #4243}}</p>
+        <iframe title="Mapa" class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=..."></iframe>
+        <p class="small"><a class="link" href="https://maps.google.com/?q={{Latadia #4243}}" target="_blank" rel="noopener">Abrir en Google Maps</a></p>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="../assets/js/main.js"></script>
+</body>
+</html>
