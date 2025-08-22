@@ -1,32 +1,35 @@
-// src/js/main.js (placeholders para número WhatsApp E.164)
+// src/js/main.js
 import { initNav } from './modules/nav.js';
 import { renderHomeServices, renderServicesPage } from './modules/services.js';
 import { initQuoteForm, initScheduleForm } from './modules/form.js';
 import { initWhatsAppLinks, setCurrentYear } from './modules/contact.js';
-// src/js/main.js
 import { initThemeSwitcher } from './modules/theme.js';
-// ...otros imports/render...
+
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('[main] cargado'); // para verificar en consola
+
+  // Tema + favicon dinámico
   initThemeSwitcher();
-  // ...tus otros inits...
-});
 
-
-document.addEventListener('DOMContentLoaded', () => {
+  // Navegación
   initNav();
-  initWhatsAppLinks({ phone: '{{WHATSAPP_E164}}' }); // ← reemplaza por número E.164 real
+
+  // WhatsApp y año en footer
+  initWhatsAppLinks({ phone: '{{WHATSAPP_E164}}' }); // será sustituido por inject-config
   setCurrentYear();
 
-  if (document.body.classList.contains('page--home')) {
+  // Render condicional por página
+  const b = document.body;
+  if (b.classList.contains('page--home')) {
     renderHomeServices('#services-grid');
   }
-  if (document.body.classList.contains('page--servicios')) {
+  if (b.classList.contains('page--servicios')) {
     renderServicesPage('#services-grid-mecanica', '#services-grid-electronica');
   }
-  if (document.body.classList.contains('page--cotiza')) {
+  if (b.classList.contains('page--cotiza')) {
     initQuoteForm('#quoteForm', '#quoteMsg', '#quoteServiceSelect', '#quoteWhatsApp', { phone: '{{WHATSAPP_E164}}' });
   }
-  if (document.body.classList.contains('page--agendar')) {
+  if (b.classList.contains('page--agendar')) {
     initScheduleForm('#scheduleForm', '#scheduleMsg', '#scheduleServiceSelect', '#scheduleWhatsApp', { phone: '{{WHATSAPP_E164}}' });
   }
 });
