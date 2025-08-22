@@ -2,17 +2,6 @@
 const THEME_KEY = 'mi-sitio:theme';
 const DEFAULT_THEME = 'actual';
 
-
-function getBasePrefix() {
-  // 1) Toma el valor del <meta id="site-base" data-base="...">
-  const meta = document.getElementById('site-base');
-  const val = meta?.getAttribute('data-base') || '';
-  // Normaliza: '' o '/algo', sin barra final
-  if (!val) return '';
-  return val.endsWith('/') ? val.slice(0, -1) : val;
-}
-
-
 export function applyTheme(theme) {
   const t = theme || DEFAULT_THEME;
   document.documentElement.setAttribute('data-theme', t);
@@ -51,27 +40,27 @@ function updateFaviconForTheme(theme) {
   let link = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
   if (!link) {
     link = document.createElement('link');
-    link.rel = 'icon';
-    link.type = 'image/svg+xml';
+    link.setAttribute('rel', 'icon');
+    link.setAttribute('type', 'image/svg+xml');
     document.head.appendChild(link);
   }
 
   const map = {
-    actual:    '/webGenerica02/assets/img/favicon.svg',
-    propuesta: '/webGenerica02/assets/img/favicon-dark.svg',
-    scania:    '/webGenerica02/assets/img/favicon-scania.svg'
+    actual:    '/assets/img/favicon.svg',
+    propuesta: '/assets/img/favicon-dark.svg',
+    scania:    '/assets/img/favicon-scania.svg'
   };
 
-  const href = (map[theme] || map.actual) + `?v=${Date.now()}`; // evita caché duro en Chrome
-  link.href = href;
+  // cache-busting para Chrome
+  const href = (map[theme] || map.actual) + `?v=${Date.now()}`;
+  link.setAttribute('href', href);
 
   let shortcut = document.querySelector('link[rel="shortcut icon"]');
   if (!shortcut) {
     shortcut = document.createElement('link');
-    shortcut.rel = 'shortcut icon';
+    shortcut.setAttribute('rel', 'shortcut icon');
     document.head.appendChild(shortcut);
   }
-  shortcut.href = href;
+  shortcut.setAttribute('href', href);
 }
-
 
