@@ -69,7 +69,7 @@ a:hover { text-decoration: underline; }
 /* Botones */
 .btn {
   display: inline-block; padding: 10px 16px;
-  border-radius: 10px; font-weight: 600; border: 1px solid transparent;
+  border-radius: 10px; font-weight: 600; border: 1px solid transparent;margin-top: 15px;
 
   &--primary   { background: var(--brand);  color: var(--btn-fg); }
   &--secondary { background: var(--accent); color: var(--btn-fg); }
@@ -125,9 +125,18 @@ a:hover { text-decoration: underline; }
 .form__msg { margin-top: 8px; color: var(--warn); }
 
 /* Footer */
-.footer { margin-top: 48px; padding: 24px 0; border-top: 1px solid var(--card-bd); }
+.footer { margin-top: 48px; padding: 24px 0; border-top: 1px solid var(--card-bd);
+p{
+  margin: 8px auto;
+} }
 .footer__grid { @include m.container; display: grid; gap: 16px; grid-template-columns: repeat(4, 1fr); }
 .footer__copy { text-align: center; margin-top: 10px; color: var(--muted); }
+
+.footer__logo {
+    width: auto;
+    height: 60px;
+    max-height: 8vh;
+}
 
 /* WhatsApp flotante */
 .wafloat {

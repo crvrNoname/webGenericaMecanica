@@ -67,7 +67,11 @@
 <body class="page page--servicios">
   <header class="header">
     <div class="container header__inner">
-      <a href="../index.html" class="brand"><img src="../assets/img/logo.svg" alt="" class="brand__logo"><span class="brand__name">{{AIR}}</span></a>
+         <!-- HeaderLogo -->
+<a href="./index.html" class="brand" aria-label="Ir al inicio">
+  <img class="brand__logo js-logo" alt="Logo AIR" />
+  <span class="brand__name">AIR</span>
+</a>
       <button class="nav__toggle" aria-expanded="false" aria-controls="nav">☰</button>
       <nav id="nav" class="nav" aria-label="Principal">
         <ul class="nav__list">
@@ -106,12 +110,9 @@
       </ul>
     </section>
   </main>
+ <!-- placeholder del footer compartido -->
+<div data-include="/partials/footer.html"></div>
 
-  <footer class="footer">
-    <div class="container footer__copy small">© <span id="year"></span> {{AIR}}</div>
-  </footer>
-
-  <a class="wafloat" data-whatsapp id="waFloat" href="#">💬</a>
   <script type="module" src="../assets/js/main.js"></script>
 </body>
 </html>
