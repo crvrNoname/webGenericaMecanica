@@ -1,4 +1,3 @@
-// src/js/main.js
 import { initNav } from './modules/nav.js';
 import { renderHomeServices, renderServicesPage } from './modules/services.js';
 import { initQuoteForm, initScheduleForm } from './modules/form.js';
@@ -6,19 +5,14 @@ import { initWhatsAppLinks, setCurrentYear } from './modules/contact.js';
 import { initThemeSwitcher } from './modules/theme.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('[main] cargado'); // para verificar en consola
+  console.log('[main] cargado');
 
-  // Tema + favicon dinámico
   initThemeSwitcher();
-
-  // Navegación
   initNav();
 
-  // WhatsApp y año en footer
-  initWhatsAppLinks({ phone: '{{WHATSAPP_E164}}' }); // será sustituido por inject-config
+  initWhatsAppLinks({ phone: '{{WHATSAPP_E164}}' });
   setCurrentYear();
 
-  // Render condicional por página
   const b = document.body;
   if (b.classList.contains('page--home')) {
     renderHomeServices('#services-grid');

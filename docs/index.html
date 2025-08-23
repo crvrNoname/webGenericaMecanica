@@ -6,48 +6,59 @@
   <title>AIR – Mecánica y Electrónica</title>
   <meta name="description" content="Su auto va a quedar JOYA" />
 
-  <!-- Cambia data-base a "/webGenerica02" cuando publiques en GitHub Pages.
-       En local (Live Server), déjalo vacío "" -->
-  <meta id="site-base" data-base="/webGenerica02" />
+  <!-- Si publicas en GitHub Pages (Project Pages) y quieres forzar, pon data-base="/webGenerica02".
+       En local (Live Server) déjalo vacío "" -->
+  <meta id="site-base" data-base="">
 
-  <!-- Favicon base (fallback) - las href se asignan dinámicamente -->
-  <link id="icon-svg" rel="icon" type="image/svg+xml" data-href="/assets/img/favicon.svg" />
-  <link id="icon-shortcut" rel="shortcut icon" data-href="/assets/img/favicon.svg" />
-
-  <!-- Color barra móvil (theme.js lo actualiza al cambiar tema) -->
+  <!-- Sin href: el script los setea (evita 404/MIME antes de tiempo) -->
+  <link id="icon-svg" rel="icon" type="image/svg+xml" />
+  <link id="icon-shortcut" rel="shortcut icon" />
   <meta name="theme-color" content="#0f1115" />
+  <link id="css-main" rel="stylesheet" />
 
-  <!-- CSS (dinámico para que funcione en / y en /pages/) -->
-  <link id="css-preload" rel="preload" as="style" data-href="/assets/css/main.css" />
-  <link id="css-main" rel="stylesheet" data-href="/assets/css/main.css" />
-
-  <!-- Open Graph -->
+  <!-- OG (puedes dejarlos relativos; no afectan la carga de la página) -->
   <meta property="og:title" content="AIR" />
   <meta property="og:description" content="Su auto va a quedar JOYA" />
-  <meta property="og:image" content="/assets/img/logo.svg" />
+  <meta property="og:image" content="./assets/img/logo.svg" />
+  <meta property="og:type" content="website" />
 
-  <!-- Bootstrap de rutas: aplica el prefijo a favicon, CSS y carga main.js -->
+  <!-- Bootstrap de rutas: decide prefijo y asigna href de CSS/JS/Favicon -->
   <script>
     (function () {
-      var meta = document.getElementById('site-base');
-      var base = (meta && meta.getAttribute('data-base')) || '';
-      base = base.replace(/\/+$/, ''); // sin barra final
-
-      function setHref(id) {
-        var el = document.getElementById(id);
-        if (el && el.dataset.href) el.href = base + el.dataset.href;
+      function computeBase() {
+        const hinted = document.getElementById('site-base')?.getAttribute('data-base') || '';
+        const isLocal = /^(localhost|127\.0\.0\.1|0\.0\.0\.0)$/i.test(location.hostname);
+        if (isLocal) return '';                            // Live Server → sin prefijo
+        if (hinted)  return hinted.replace(/\/+$/, '');    // Pages forzado
+        if (location.hostname.endsWith('github.io')) {     // Auto para Pages
+          const seg = location.pathname.split('/').filter(Boolean)[0];
+          return seg ? '/' + seg : '';
+        }
+        return '';
       }
-      setHref('icon-svg');
-      setHref('icon-shortcut');
-      setHref('css-preload');
-      setHref('css-main');
+      const base = computeBase();
+      const inPagesFolder = /\/pages\//.test(location.pathname);
+      // Si usas estructura docs/ + pages/, las rutas relativas también son válidas:
+      const rel = inPagesFolder ? '..' : '.';
 
-      // inyecta JS principal (ESM) con el mismo prefijo
-      var s = document.createElement('script');
+      // 1) Asigna favicon y css con prefijo base (para Pages) o relativo (para local)
+      function setHref(id, path) {
+        const el = document.getElementById(id);
+        if (el) el.setAttribute('href', (base || rel) + path);
+      }
+      setHref('icon-svg',      '/assets/img/favicon.svg');
+      setHref('icon-shortcut', '/assets/img/favicon.svg');
+      setHref('css-main',      '/assets/css/main.css');
+
+      // 2) Inyecta main.js (ESM) con el mismo prefijo
+      const s = document.createElement('script');
       s.type = 'module';
-      s.src = (base || '') + '/assets/js/main.js';
+      s.src  = (base || rel) + '/assets/js/main.js';
       s.defer = true;
       document.head.appendChild(s);
+
+      // DEBUG opcional
+      // console.log('[bootstrap] base=', base, 'rel=', rel, 'src=', s.src);
     })();
   </script>
 </head>
@@ -157,12 +168,10 @@
       </div>
     </div>
     <div class="container footer__copy small">© <span id="year"></span> AIR. Todos los derechos reservados.</div>
-   <div class="theme-switcher" style="margin:10px 0;">
-  <button class="button js-theme" data-theme="actual" aria-pressed="false">Actual</button>
-  <button class="button js-theme" data-theme="propuesta" aria-pressed="false">Propuesta</button>
-  <button class="button js-theme" data-theme="scania" aria-pressed="false">Scania</button>
-</div>
-
+    <section class="theme-switcher" style="display:flex; gap:.5rem;">
+  <button class="button button--ghost js-theme" data-theme="actual"    aria-pressed="false">Actual</button>
+  <button class="button button--ghost js-theme" data-theme="propuesta" aria-pressed="false">Propuesta</button>
+  <button class="button button--ghost js-theme" data-theme="scania"    aria-pressed="false">Scania</button>
 </section>
 
   </footer>
