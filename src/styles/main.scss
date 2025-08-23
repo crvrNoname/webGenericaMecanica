@@ -132,14 +132,23 @@ a:hover { text-decoration: underline; }
 /* WhatsApp flotante */
 .wafloat {
   position: fixed; right: 18px; bottom: 18px;
-   background: #2dd4bf; color: #003018;
-  border-radius: 999px; padding: 12px 12px; font-size: 20px;
-  box-shadow: v.$shadow; z-index: 60;
-  
+  background: var(--wa-bg);
+  color: var(--wa-fg);
+  border-radius: 999px;
+  padding: 12px;                      /* padding parejo */
+  font-size: 20px;
+  box-shadow: v.$shadow;              /* sombra del contenedor */
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-   img {
-    width: 12vw;
-    height: 12vh;
-    -webkit-filter: drop-shadow(0px 0px 5px rgb(240, 240, 240));
-}
+  img {
+    width: 48px;                      /* más consistente que vw/vh */
+    height: 48px;
+    display: block;
+    /* glow del ícono según tema */
+    filter: drop-shadow(0 0 6px var(--wa-dropshadow));
+    -webkit-filter: drop-shadow(0 0 6px var(--wa-dropshadow));
+  }
 }

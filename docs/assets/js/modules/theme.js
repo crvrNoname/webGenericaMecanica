@@ -41,9 +41,10 @@ export function applyTheme(theme) {
     meta.setAttribute('content', bg);
   }
 
-  // actualizar favicon + logos
+  // actualizar favicon + logos + whatsapp FAB icon
   updateFaviconForTheme(t);
   updateLogosForTheme(t);
+  updateWhatsappFabForTheme(t);
 }
 
 export function initThemeSwitcher() {
@@ -107,4 +108,23 @@ function updateLogosForTheme(theme) {
   // opcional: actualiza también la imagen Open Graph
   const og = document.querySelector('meta[property="og:image"]');
   if (og) og.setAttribute('content', url);
+}
+
+// 💬 WhatsApp FAB icon por tema
+// Archivos esperados en docs/assets/img/float/:
+//  - wsp-svgZip.svg        (actual)
+//  - wsp-svgZipDark.svg    (propuesta)
+//  - wsp-svgZipScania.svg  (scania)
+function updateWhatsappFabForTheme(theme) {
+  const base = getBasePrefix();
+  const suffix = theme === 'propuesta' ? 'Dark'
+               : theme === 'scania'    ? 'Scania'
+               : '';
+  const a = document.getElementById('waFloat');
+  if (!a) return;
+
+  const img = a.querySelector('img');
+  if (!img) return;
+
+  img.src = `${base}/assets/img/float/wsp-svgZip${suffix}.svg?v=${Date.now()}`;
 }

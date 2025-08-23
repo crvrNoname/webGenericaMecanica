@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeSwitcher();         // ← importante para logos + favicon + color
   initNav();
 
-  initWhatsAppLinks({ phone: '+56988934851' });
+  initWhatsAppLinks({ phone: '{{WHATSAPP_E164}}' });
   setCurrentYear();
 
   const b = document.body;
@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderServicesPage('#services-grid-mecanica', '#services-grid-electronica');
   }
   if (b.classList.contains('page--cotiza')) {
-    initQuoteForm('#quoteForm', '#quoteMsg', '#quoteServiceSelect', '#quoteWhatsApp', { phone: '+56988934851' });
+    initQuoteForm('#quoteForm', '#quoteMsg', '#quoteServiceSelect', '#quoteWhatsApp', { phone: '{{WHATSAPP_E164}}' });
   }
   if (b.classList.contains('page--agendar')) {
-    initScheduleForm('#scheduleForm', '#scheduleMsg', '#scheduleServiceSelect', '#scheduleWhatsApp', { phone: '+56988934851' });
+    initScheduleForm('#scheduleForm', '#scheduleMsg', '#scheduleServiceSelect', '#scheduleWhatsApp', { phone: '{{WHATSAPP_E164}}' });
   }
 });

@@ -15,6 +15,9 @@
   --card-bg: #111827;
   --card-bd: #1f2937;
   --btn-fg: #0f1115;
+  --wa-bg: #2dd4bf; /* fondo del botón */
+  --wa-fg: #003018; /* texto/contraste si lo usas */
+  --wa-dropshadow: rgba(240,240,240,.85); /* halo claro por defecto */
 }
 
 /* 1) ACTUAL */
@@ -29,6 +32,9 @@ html[data-theme=actual] {
   --card-bg: #0f172a;
   --card-bd: #1f2937;
   --btn-fg: #0f1115;
+  --wa-bg: #2dd4bf;
+  --wa-fg: #003018;
+  --wa-dropshadow: #e5e7eb;
 }
 
 /* 2) PROPUESTA */
@@ -43,6 +49,10 @@ html[data-theme=propuesta] {
   --card-bg: #0f162e;
   --card-bd: #1c2541;
   --btn-fg: #0b1020;
+  --wa-bg: #0b1020; /* mantenemos turquesa, look consistente */
+  --wa-fg: #200b18;
+  /* halo claro porque el entorno es dark */
+  --wa-dropshadow: rgba(240,240,240,.85);
 }
 
 /* 3) SCANIA */
@@ -56,6 +66,10 @@ html[data-theme=scania] {
   --card-bg: #FFFFFF;
   --card-bd: #C8C9C7;
   --btn-fg: #FAFAFA;
+  --wa-bg: #041E42; /* Azul Scania */
+  --wa-fg: #FAFAFA;
+  /* halo oscuro para fondo claro */
+  --wa-dropshadow: #FAFAFA;
 }
 
 /* src/styles/main.scss */
@@ -381,18 +395,24 @@ a:hover {
   position: fixed;
   right: 18px;
   bottom: 18px;
-  background: #2dd4bf;
-  color: #003018;
+  background: var(--wa-bg);
+  color: var(--wa-fg);
   border-radius: 999px;
-  padding: 12px 12px;
+  padding: 12px; /* padding parejo */
   font-size: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25); /* sombra del contenedor */
   z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .wafloat img {
-  width: 12vw;
-  height: 12vh;
-  -webkit-filter: drop-shadow(0px 0px 5px rgb(240, 240, 240));
+  width: 48px; /* más consistente que vw/vh */
+  height: 48px;
+  display: block;
+  /* glow del ícono según tema */
+  filter: drop-shadow(0 0 6px var(--wa-dropshadow));
+  -webkit-filter: drop-shadow(0 0 6px var(--wa-dropshadow));
 }
 
 /*# sourceMappingURL=main.css.map */
