@@ -1,3 +1,4 @@
+// src/js/main.js
 import { initNav } from './modules/nav.js';
 import { renderHomeServices, renderServicesPage } from './modules/services.js';
 import { initQuoteForm, initScheduleForm } from './modules/form.js';
@@ -7,10 +8,10 @@ import { initThemeSwitcher } from './modules/theme.js';
 document.addEventListener('DOMContentLoaded', () => {
   console.log('[main] cargado');
 
-  initThemeSwitcher();
+  initThemeSwitcher();         // ← importante para logos + favicon + color
   initNav();
 
-  initWhatsAppLinks({ phone: '{{WHATSAPP_E164}}' });
+  initWhatsAppLinks({ phone: '+56988934851' });
   setCurrentYear();
 
   const b = document.body;
@@ -21,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderServicesPage('#services-grid-mecanica', '#services-grid-electronica');
   }
   if (b.classList.contains('page--cotiza')) {
-    initQuoteForm('#quoteForm', '#quoteMsg', '#quoteServiceSelect', '#quoteWhatsApp', { phone: '{{WHATSAPP_E164}}' });
+    initQuoteForm('#quoteForm', '#quoteMsg', '#quoteServiceSelect', '#quoteWhatsApp', { phone: '+56988934851' });
   }
   if (b.classList.contains('page--agendar')) {
-    initScheduleForm('#scheduleForm', '#scheduleMsg', '#scheduleServiceSelect', '#scheduleWhatsApp', { phone: '{{WHATSAPP_E164}}' });
+    initScheduleForm('#scheduleForm', '#scheduleMsg', '#scheduleServiceSelect', '#scheduleWhatsApp', { phone: '+56988934851' });
   }
 });

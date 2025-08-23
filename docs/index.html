@@ -68,10 +68,12 @@
 
   <header class="header" role="banner">
     <div class="container header__inner">
-      <a href="./index.html" class="brand" aria-label="Ir al inicio">
-        <img src="./assets/img/logo.svg" alt="Logo {{AIR}}" class="brand__logo">
-        <span class="brand__name">AIR</span>
-      </a>
+     <!-- HeaderLogo -->
+<a href="./index.html" class="brand" aria-label="Ir al inicio">
+  <img class="brand__logo js-logo" alt="Logo AIR" />
+  <span class="brand__name">AIR</span>
+</a>
+
 
       <button class="nav__toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">☰</button>
 
@@ -87,7 +89,7 @@
 
       <div class="header__cta">
         <a class="btn btn--primary" data-whatsapp href="#" id="ctaWhatsAppHeader">WhatsApp</a>
-        <a class="btn btn--ghost" href="tel:+56912345678" aria-label="Llamar por teléfono">+56 9 88934851</a>
+        <a class="btn btn--ghost" href="tel:+56988934851" aria-label="Llamar por teléfono">+56 9 88934851</a>
       </div>
     </div>
   </header>
@@ -136,7 +138,7 @@
         <h3>¿Necesitas ayuda ahora?</h3>
         <p>Escríbenos por WhatsApp o llámanos, respondemos rápido.</p>
         <a class="btn btn--primary" data-whatsapp href="#" id="ctaWhatsAppBody">WhatsApp</a>
-        <a class="btn btn--secondary" href="tel:+56912345678">Llamar</a>
+        <a class="btn btn--secondary" href="tel:+56988934851">Llamar</a>
       </div>
     </section>
   </main>
@@ -144,7 +146,9 @@
   <footer class="footer" role="contentinfo">
     <div class="container footer__grid">
       <div>
-        <img src="./assets/img/logo.svg" alt="" class="footer__logo" />
+        <!-- FooterLogo -->
+<img class="footer__logo js-logo" alt="Logo AIR" />
+
         <p>AIR</p>
         <p class="small">Su auto va a quedar JOYA</p>
       </div>
@@ -176,8 +180,10 @@
 
   </footer>
 
-  <a class="wafloat" data-whatsapp id="waFloat" href="#" aria-label="Chatear por WhatsApp">💬</a>
+  <a class="wafloat" data-whatsapp id="waFloat" href="https://api.whatsapp.com/send?phone=56988934851&text=HOLA! quiero una hora con el mecanicoSo!" target="_blank" aria-label="Chatear por WhatsApp"><img src="./assets/img/float/wsp-svgZip.svg" alt="Ícono WhatsApp"></a>
+
 
   <script type="module" src="./assets/js/main.js"></script>
+  
 </body>
 </html>

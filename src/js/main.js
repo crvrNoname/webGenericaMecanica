@@ -1,3 +1,4 @@
+// src/js/main.js
 import { initNav } from './modules/nav.js';
 import { renderHomeServices, renderServicesPage } from './modules/services.js';
 import { initQuoteForm, initScheduleForm } from './modules/form.js';
@@ -7,7 +8,7 @@ import { initThemeSwitcher } from './modules/theme.js';
 document.addEventListener('DOMContentLoaded', () => {
   console.log('[main] cargado');
 
-  initThemeSwitcher();
+  initThemeSwitcher();         // ← importante para logos + favicon + color
   initNav();
 
   initWhatsAppLinks({ phone: '{{WHATSAPP_E164}}' });

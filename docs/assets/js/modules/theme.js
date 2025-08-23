@@ -1,10 +1,12 @@
+// src/js/modules/theme.js
 const THEME_KEY = 'mi-sitio:theme';
 const DEFAULT_THEME = 'actual';
 
+// Prefijo correcto (local: relativo . / .. ; Pages: /REPO)
 function getBasePrefix() {
   const hinted = document.getElementById('site-base')?.getAttribute('data-base') || '';
   const isLocal = /^(localhost|127\.0\.0\.1|0\.0\.0\.0)$/i.test(location.hostname);
-  if (isLocal) return /\/pages\//.test(location.pathname) ? '..' : '.'; // relativo limpio
+  if (isLocal) return /\/pages\//.test(location.pathname) ? '..' : '.';
   if (hinted)  return hinted.replace(/\/+$/, '');
   if (location.hostname.endsWith('github.io')) {
     const seg = location.pathname.split('/').filter(Boolean)[0];
@@ -13,25 +15,41 @@ function getBasePrefix() {
   return '';
 }
 
+// 🧩 setea logo base si no hay src (para evitar ícono roto inicial en /pages/)
+function ensureBaseLogos() {
+  const base = getBasePrefix();
+  const url = `${base}/assets/img/logo.svg`;
+  document.querySelectorAll('img.js-logo').forEach(img => {
+    if (!img.getAttribute('src')) img.setAttribute('src', url);
+  });
+}
+
 export function applyTheme(theme) {
   const t = theme || DEFAULT_THEME;
   document.documentElement.setAttribute('data-theme', t);
   try { localStorage.setItem(THEME_KEY, t); } catch {}
 
+  // marcar botón activo
   document.querySelectorAll('.js-theme').forEach(btn => {
     btn.setAttribute('aria-pressed', btn.dataset.theme === t ? 'true' : 'false');
   });
 
+  // meta theme-color (móviles)
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) {
     const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#000';
     meta.setAttribute('content', bg);
   }
 
+  // actualizar favicon + logos
   updateFaviconForTheme(t);
+  updateLogosForTheme(t);
 }
 
 export function initThemeSwitcher() {
+  // Logo base primero (por si estás en /pages/ y no pusiste src)
+  ensureBaseLogos();
+
   let saved = DEFAULT_THEME;
   try { saved = localStorage.getItem(THEME_KEY) || DEFAULT_THEME; } catch {}
   applyTheme(saved);
@@ -44,6 +62,7 @@ export function initThemeSwitcher() {
   });
 }
 
+// 🔗 favicon por tema (usa mismo prefijo que CSS/JS)
 function updateFaviconForTheme(theme) {
   let link = document.querySelector('link[rel="icon"][type="image/svg+xml"]')
            || document.querySelector('link[rel="icon"]');
@@ -71,4 +90,21 @@ function updateFaviconForTheme(theme) {
     document.head.appendChild(shortcut);
   }
   shortcut.href = href;
+}
+
+// 🖼️ logos por tema (nombres: logo.svg, logo-dark.svg, logo-scania.svg)
+function updateLogosForTheme(theme) {
+  const base = getBasePrefix();
+  const suffix = theme === 'propuesta' ? '-dark'
+               : theme === 'scania'    ? '-scania'
+               : '';
+  const url = `${base}/assets/img/logo${suffix}.svg`;
+  document.querySelectorAll('img.js-logo').forEach(img => {
+    // conserva dimensiones; solo cambia src (con cache-busting opcional)
+    img.setAttribute('src', url + `?v=${Date.now()}`);
+  });
+
+  // opcional: actualiza también la imagen Open Graph
+  const og = document.querySelector('meta[property="og:image"]');
+  if (og) og.setAttribute('content', url);
 }
