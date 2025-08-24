@@ -124,19 +124,104 @@ a:hover { text-decoration: underline; }
 .form__actions { display: flex; gap: 10px; margin-top: 10px; }
 .form__msg { margin-top: 8px; color: var(--warn); }
 
-/* Footer */
-.footer { margin-top: 48px; padding: 24px 0; border-top: 1px solid var(--card-bd);
-p{
-  margin: 8px auto;
-} }
-.footer__grid { @include m.container; display: grid; gap: 16px; grid-template-columns: repeat(4, 1fr); }
-.footer__copy { text-align: center; margin-top: 10px; color: var(--muted); }
+/* ===== Footer centrado (mobile-first, themable) ===== */
 
-.footer__logo {
-    width: auto;
-    height: 60px;
-    max-height: 8vh;
+
+.footer {
+  margin-top: 48px;
+  padding: 24px 0;
+  border-top: 1px solid var(--card-bd);
+  background: transparent;
+  color: var(--fg);
+  text-align: center; /* ⬅️ centro global de textos */
+
+  h4 {
+    margin: 0 0 .5rem;
+    font-size: 1rem;
+    color: var(--fg);
+  }
+
+  p {
+    margin: 8px 0;
+    color: var(--muted);
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover { text-decoration: underline; }
 }
+
+/* 1 col (móvil) → 2 col (>=640) → 4 col (>=960), con contenido centrado */
+.footer__grid {
+  @include m.container;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+
+  /* centra los ítems dentro de cada celda */
+  justify-items: center;
+  align-items: start;
+
+  /* columnas responsivas */
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 960px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* cada “columna” centrada y con ancho legible */
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* ⬅️ centro horizontal del contenido */
+    gap: 6px;
+    max-width: 32ch;         /* ⬅️ evita líneas muy largas, más armónico */
+  }
+}
+
+/* Logo del footer: centrado y con escalado suave */
+.footer__logo {
+  width: auto;
+  height: 48px;             /* móvil */
+  max-height: 8vh;
+  display: block;
+  margin-inline: auto;       /* ⬅️ asegura centrado del img */
+
+  @media (min-width: 640px) { height: 56px; }
+  @media (min-width: 960px) { height: 60px; }
+}
+
+/* Lista de enlaces de contacto, centrada */
+.footer .list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.footer .list li + li { margin-top: 6px; }
+
+/* Copiright centrado */
+.footer__copy {
+  @include m.container;
+  text-align: center;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+/* Switcher de tema centrado en todos los tamaños */
+.footer .theme-switcher {
+  @include m.container;
+  margin-top: 12px;
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  justify-content: center;   /* ⬅️ centrado estable */
+}
+
 
 /* WhatsApp flotante */
 .wafloat {
